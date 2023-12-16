@@ -462,7 +462,13 @@ export default {
         if (this.app.torOnly) {
           return "#";
         }
-        return `http://${window.location.hostname}:${this.app.port}${this.app.path}`;
+        if (this.app.proxied) {
+          return `https://${this.app.proxied_hostname}${this.app.path}`;
+        }
+        if (${window.location.protocol} === "https") {
+          return `http://${window.location.hostname}:${this.app.port}${this.app.path}`;
+        }
+        return `${window.location.protocol}//${window.location.hostname}:${this.app.port}${this.app.path}`;
       }
     },
     appDependencies() {
