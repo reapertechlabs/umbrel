@@ -14,4 +14,4 @@ services:
       context: packages/manager
       dockerfile: Dockerfile.dev
     volumes:
-      - ${PWD}/packages/manager:/app
+        - ${PWD}/packages/manager:/app
