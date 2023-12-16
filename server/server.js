@@ -25,15 +25,15 @@ app.use(expressjwt({
   getToken: request => request.headers.authorization.split(' ')[1],
 }))
 
-app.get('/', (request, response) => {
+app.get('/um-api/', (request, response) => {
   response.json({message: `there's no cloud, it's just someone else's computer ☂️`})
 })
 
-app.get('/is-umbrel-home', asyncHandler(async (request, response) => {
+app.get('/um-api/is-umbrel-home', asyncHandler(async (request, response) => {
   response.json(await isUmbrelHome())
 }))
 
-app.get('/can-migrate', asyncHandler(async (request, response) => {
+app.get('/um-api/can-migrate', asyncHandler(async (request, response) => {
   const currentInstall = app.get('UMBREL_ROOT')
   const externalUmbrelInstall = await findExternalUmbrelInstall()
   await runPreMigrationChecks(currentInstall, externalUmbrelInstall)
@@ -42,11 +42,11 @@ app.get('/can-migrate', asyncHandler(async (request, response) => {
   response.json({success: true})
 }))
 
-app.get('/migration-status', asyncHandler(async (request, response) => {
+app.get('/um-api/migration-status', asyncHandler(async (request, response) => {
   response.json(getMigrationStatus())
 }))
 
-app.post('/migrate', asyncHandler(async (request, response) => {
+app.post('/um-api/migrate', asyncHandler(async (request, response) => {
   const currentInstall = app.get('UMBREL_ROOT')
   const externalUmbrelInstall = await findExternalUmbrelInstall()
   await runPreMigrationChecks(currentInstall, externalUmbrelInstall)

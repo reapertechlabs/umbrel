@@ -20,9 +20,12 @@ const main = async() => {
   server.set('UMBREL_ROOT', UMBREL_ROOT)
 
   // Start server
-  const port = 81
-  server.listen(port, () => {
-    console.log(`Umbrel server listening on port ${port}`)
+
+  const port = process.env.UMBRELD_PORT || 8881
+  const bind_address = process.env.UMBRELD_HOST || '127.0.0.1'
+ 
+  server.listen(port, bind_address, function() {
+    console.log(`Umbrel server listening on port`)
   })
 }
 
