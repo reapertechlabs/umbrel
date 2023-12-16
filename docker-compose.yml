@@ -115,8 +115,8 @@ services:
         ipv4_address: $AUTH_IP
 networks:
   default:
-  name: umbrel_main_network
-  ipam:
-    driver: default
-    config:
-      - subnet: "$NETWORK_IP/16"
+    name: umbrel_main_network
+    ipam:
+      driver: default
+      config:
+        - subnet: "$NETWORK_IP/16"
