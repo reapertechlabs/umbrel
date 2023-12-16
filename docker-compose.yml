@@ -15,7 +15,7 @@ services:
       - "127.0.0.1:$TOR_PROXY_PORT:$TOR_PROXY_PORT"
     networks:
       default:
-      ipv4_address: $TOR_PROXY_IP
+        ipv4_address: $TOR_PROXY_IP
   nginx:
     container_name: nginx
     image: nginx:1.17.8@sha256:380eb808e2a3b0dd954f92c1cae2f845e6558a15037efefcabc5b4e03d666d03
