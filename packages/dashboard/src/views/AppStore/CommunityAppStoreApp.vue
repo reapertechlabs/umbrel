@@ -429,7 +429,7 @@ export default {
           return "#";
         }
         if (this.app.proxied) {
-          return `https://${this.app.proxied_hostname}.${process.env.UMBREL_DOMAIN_NAME}${this.app.path}`;
+          return `https://${this.app.proxied_hostname}.${process.env.UMBREL_DOMAIN_NAME}${this.app.path}`
         }
         return `http://${window.location.hostname}:${this.app.port}${this.app.path}`;
       }
