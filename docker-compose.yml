@@ -43,7 +43,7 @@ services:
         ipv4_address: $DASHBOARD_IP
   manager:
     container_name: manager
-    image: getumbrel/manager:0.5.4@sha256:400559b951ec19b9e79c5eec96bf2a11efd57a7f9c65f9a8cc03e6ff833e9a59
+    image: ghcr.io/reapertechlabs/manager
     restart: on-failure
     stop_grace_period: 5m30s
     volumes:
