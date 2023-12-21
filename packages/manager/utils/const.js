@@ -59,6 +59,7 @@ module.exports = {
   IS_UMBREL_OS: process.env.IS_UMBREL_OS === 'true',
   UMBREL_COOKIE_NAME: "UMBREL_SESSION",
   UMBREL_AUTH_SECRET: readFromEnvOrTerminate("UMBREL_AUTH_SECRET"),
+  UMBREL_DOMAIN_NAME: readFromEnvOrTerminate("UMBREL_DOMAIN_NAME"),
   UMBREL_APP_REPO_URL: process.env.UMBREL_APP_REPO_URL || DEFAULT_UMBREL_APP_REPO_URL,
   UMBREL_APP_STORE_REPO: {
     id: "umbrel",

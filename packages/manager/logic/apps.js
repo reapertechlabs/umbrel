@@ -64,6 +64,8 @@ async function addAppMetadata(apps) {
       app.icon = `${constants.UMBREL_GALLERY_ASSETS_BASE_URL}/${app.id}/icon.svg`;
     }
 
+    app.umbrel_domainname = `${constants.UMBREL_DOMAIN_NAME}`;
+
     app.gallery = app.gallery.map(image => {
       if(image.startsWith('http://') || image.startsWith('https://')) {
         return image;
