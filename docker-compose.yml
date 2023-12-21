@@ -25,13 +25,13 @@ services:
     restart: on-failure
     stop_grace_period: 30s
     ports:
-      - "${NGINX_PORT}:80"
+      - "$NGINX_IP:${NGINX_PORT}:80"
     networks:
       default:
         ipv4_address: $NGINX_IP
   dashboard:
     container_name: dashboard
-    image: getumbrel/dashboard
+    image: ghcr.io/reapertechlabs/dashboard
     restart: on-failure
     stop_grace_period: 1m30s
     volumes:
@@ -91,13 +91,13 @@ services:
       TOR_HIDDEN_SERVICE_DIR: "/var/lib/tor"
       IS_UMBREL_OS: ${IS_UMBREL_OS:-"false"}
       UMBREL_APP_REPO_URL: "https://github.com/reapertechlabs/umbrel-apps.git"
-      UMBREL_DOMAIN_NAME: $UMBREL_DOMAIN_NAME
+      UMBREL_DOMAIN_NAME: ${UMBREL_DOMAIN_NAME}
     networks:
       default:
         ipv4_address: $MANAGER_IP
   auth:
     container_name: auth
-    image: getumbrel/auth-server:v0.5.1@sha256:afcd9065eab02f98ee6bf705045170a4b385fb5f81e3b168bb92ffb8ac7a1760
+    image: ghcr.io/reapertechlabs/auth-server
     user: "1000:1000"
     #build: ./deps/app-auth
     restart: on-failure

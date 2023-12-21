@@ -19,7 +19,7 @@ module.exports = Object.freeze({
 
 	UMBREL_AUTH_SECRET: readFromEnvOrTerminate("UMBREL_AUTH_SECRET"),
 
-	UMBREL_DOMAIN_NAME: readFromEnvOrTerminate("UMBEL_DOMAIN_NAME"),
+	UMBREL_DOMAIN_NAME: readFromEnvOrTerminate("UMBREL_DOMAIN_NAME"),
 
 	TOR_PATH: process.env.TOR_PATH || "/var/lib/tor",
 	APP_DATA_PATH: process.env.APP_DATA_PATH || "/app-data",
