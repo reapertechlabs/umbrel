@@ -18,15 +18,27 @@ async function getAppPort(app) {
 	return appManifest.port;
 }
 
+async function getAppUrl(app) {
+	const appManifestFile = path.join(CONSTANTS.APP_DATA_PATH, app, 'umbrel-app.yml');
+	const appManifestYaml = await fs.readFile(appManifestFile, "utf-8");
+	const appManifest = yaml.load(appManifestYaml, 'utf8');
+
+ 	if (appManifest.proxied) {
+		return `${appManifest.proxied_hostname}.${CONSTANTS.UMBREL_DOMAIN_NAME}`;
+	}
+	
+	return appManifest.port;
+}
+
 async function host(req, app, origin) {
 	try {
 		switch(origin) {
 			case "tor":
 				return (await getTorHostname(app));
 			case "host":
-				const appPort = (await getAppPort(app));
+				const appUrl = (await getAppUrl(app));
 
-				return `${req.hostname}:${appPort}`;
+				return `${appUrl}`;
 		}
 	} catch (e) {
 		throw new Error("Failed to determine host");

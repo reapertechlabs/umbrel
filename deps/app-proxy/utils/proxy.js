@@ -131,6 +131,9 @@ function apply(app) {
 					
 					return res.redirect(`${req.protocol}://${authHsUrl}/?${searchParams.toString()}`);
 				} else {
+					if (CONSTANTS.UMBREL_USE_AUTH_URL) {
+						return res.redirect(`${req.protocol}://${CONSTANTS.UMBREL_AUTH_URL}/?${searchParams.toString()}`);
+					} 
 					return res.redirect(`${req.protocol}://${req.hostname}:${CONSTANTS.UMBREL_AUTH_PORT}/?${searchParams.toString()}`);
 				}	
 			}

@@ -60,7 +60,8 @@ module.exports = Object.freeze({
 
 	UMBREL_AUTH_SECRET: readFromEnvOrTerminate("UMBREL_AUTH_SECRET"),
 	UMBREL_AUTH_PORT: parseInt(process.env.UMBREL_AUTH_PORT) || 2000,
-
+	UMBREL_USE_AUTH_URL: (typeof(process.env.UMBREL_USE_AUTH_URL) === "string") ? (process.env.UMBREL_USE_AUTH_URL === "true") : false,
+	UMBREL_AUTH_URL: process.env.UMBREL_AUTH_URL || '',
 	MANAGER_IP: readFromEnvOrTerminate("MANAGER_IP"),
 	MANAGER_PORT: parseInt(process.env.MANAGER_PORT) || 3006,
 });

@@ -36,6 +36,8 @@ services:
     stop_grace_period: 1m30s
     volumes:
       - ${PWD}/packages/dashboard:/app
+    environment:
+      UMBREL_DOMAIN_NAME: $UMBREL_DOMAIN_NAME
     networks:
       default:
         ipv4_address: $DASHBOARD_IP
@@ -89,6 +91,7 @@ services:
       TOR_HIDDEN_SERVICE_DIR: "/var/lib/tor"
       IS_UMBREL_OS: ${IS_UMBREL_OS:-"false"}
       UMBREL_APP_REPO_URL: "https://github.com/reapertechlabs/umbrel-apps.git"
+      UMBREL_DOMAIN_NAME: $UMBREL_DOMAIN_NAME
     networks:
       default:
         ipv4_address: $MANAGER_IP
@@ -101,10 +104,13 @@ services:
     environment:
       PORT: $AUTH_PORT
       UMBREL_AUTH_SECRET: $UMBREL_AUTH_SECRET
+      UMBREL_USE_AUTH_URL: $UMBREL_USE_AUTH_URL
+      UMBREL_AUTH_URL: $UMBREL_AUTH_URL
       MANAGER_IP: $MANAGER_IP
       MANAGER_PORT: 3006
       DASHBOARD_IP: $DASHBOARD_IP
       DASHBOARD_PORT: 3004
+      UMBREL_DOMAIN_NAME: $UMBREL_DOMAIN_NAME
     volumes:
       - ${PWD}/tor/data:/var/lib/tor:ro
       - ${PWD}/app-data:/app-data:ro
